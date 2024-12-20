@@ -1,5 +1,6 @@
 # Node modules for the server
 server/node_modules/
+next_frontend/node_modules/
 
 # Environment files
 #server/.env
