@@ -1,22 +1,31 @@
-import React from 'react'
+import Link from "next/link";
 
-const Tasklist = ({tasks}) => {
-  console.log(tasks)
+const Tasklist = ({ tasks }) => {
   return (
-    <div className="overflow-x-auto">
-  
-      <h1>Task List</h1>
+    <>
       {tasks.map(task => (
-        <div key={task.id}>
-          <p><strong>ID:</strong> {task.id}</p>
-          <p><strong>Title:</strong> {task.title}</p>
-          <p><strong>Description:</strong> {task.description}</p>
-          <p><strong>Status:</strong> {task.status}</p>
+        <div key={task.id} className="bg-white shadow rounded-lg p-4 mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+          <div className="flex flex-col sm:flex-row sm:space-x-4">
+            <div className="space-y-1">
+              <h4 className="text-lg font-semibold">{task.title}</h4>
+              <p className="text-sm text-gray-600">
+                {task.description}
+              </p>
+              <div className="text-sm text-gray-600">
+                <div className={`badge gap-2 ${(task.status === 'pending') ? 'badge-warning' : 'badge-success'}`}>
+                  {task.status}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col w-64 sm:flex-row sm:w-auto sm:space-x-2 mt-2 sm:mt-0">
+            <Link href={``} className="btn btn-sm text-white text-sm font-medium btn-info">Edit</Link>
+            <Link href="room.html" className="btn btn-sm text-white text-sm font-medium btn-error">Delete</Link>
+          </div>
         </div>
       ))}
-    
-</div>
-  )
-}
+    </>
+  );
+};
 
-export default Tasklist
+export default Tasklist;
