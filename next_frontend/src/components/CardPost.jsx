@@ -16,7 +16,7 @@ const CardPost = ({post}) => {
             className="w-full sm:w-32 sm:h-32 mb-3 sm:mb-0 object-cover rounded-lg"
           />
           <div className="space-y-1">
-            <Link href={`blog/${post.id}`} ><h4 className="text-lg font-semibold">{post.title}</h4></Link>
+            <Link href={`/blog/${post.id}`} ><h4 className="text-lg font-semibold">{post.title}</h4></Link>
             <p className="text-sm text-gray-600">            
               {post.content}
             </p>

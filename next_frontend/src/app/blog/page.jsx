@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 // Fetch posts function
 const getPosts = async (pageNo) => {
-  const API_URL = process.env.API_BASE_URL; // Move API_URL definition here
+  const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL; // Move API_URL definition here
   const response = await fetch(`${API_URL}blog/posts?page=${pageNo}`);
   const result = await response.json();  
   return result || [];
@@ -20,6 +20,7 @@ const BlogPage = async ({searchParams}) => {
   const posts = await data.posts;
   return (
     <>
+    
     <div>
       {posts.length > 0 ? (
         posts.map((post) => <CardPost key={post.id} post={post} />)

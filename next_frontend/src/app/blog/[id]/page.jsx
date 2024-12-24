@@ -1,29 +1,27 @@
+import GoBackButton from '@/components/UI/blog/GoBackButton';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react'
-import { FaAnglesLeft } from "react-icons/fa6";
+
+
+
 
 const getPost = async (id) =>{
-  const API_URL = process.env.API_BASE_URL; // Move API_URL definition here
+  const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL; // Move API_URL definition here
   const response = await fetch(`${API_URL}blog/post/${id}`);
   const result = await response.json();  
   return result || [];
 }
+
 const BlogDetailPage = async ({params}) => {
   const queryParam = await params
   const id = queryParam.id
   const respose = await getPost(id);
-  const post =  respose.post
+  const post =  respose.post;
+   
   return (
-    <div className="bg-white shadow rounded-lg p-6">
-        <Link
-          href="/blog"
-          className="flex items-center text-gray-600 hover:text-gray-800 mb-4"
-        >
-          <FaAnglesLeft />
-          <span className="ml-2">Back to List</span>
-        </Link>
 
+    <div className="bg-white shadow rounded-lg p-6">     
+       <GoBackButton />
         <div className="flex flex-col">
           <Image
             src={post.image}

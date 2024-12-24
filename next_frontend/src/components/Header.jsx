@@ -24,20 +24,17 @@ const Header = () => {
               Blog
             </Link>
             <Link
-              href="/blog/new"
+              href="/new-blog"
               className="mr-3 text-gray-800 hover:text-gray-600"
             >
               New Blog
             </Link>
             <Link
-              href="register.html"
+              href="/test-form"
               className="mr-3 text-gray-800 hover:text-gray-600"
             >
               <i className="fa fa-user"></i> Register
-            </Link>
-            <Link href="my-rooms.html">
-              <i className="fa fa-building"></i> My Rooms
-            </Link>
+            </Link>            
             <Link
               href="login.html"
               className="mx-3 text-gray-800 hover:text-gray-600"

@@ -25,7 +25,7 @@ router.put('/post/:id',
 router.post('/post', [
   body('title')
   .trim()
-  .isLength({min: 5, max: 10})
+  .isLength({min: 5, max: 100})
   .withMessage('Title must be between 5 and 10 characters long.'),
   body('content')
   .trim()
