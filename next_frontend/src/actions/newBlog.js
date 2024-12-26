@@ -1,3 +1,4 @@
+"use server";
 import { z } from 'zod';
 
 const blogSchema = z.object({
@@ -15,14 +16,16 @@ const blogSchema = z.object({
 
 export async function saveBlog(prevState, formData) {
   // Create rawData object for validation
+  
   const rawData = {
     title: formData.get('title'),
     content: formData.get('content'),
     file: formData.get('file'),
   };
-
+  
   // Validate the rawData against the schema
   const validateSchema = blogSchema.safeParse(rawData);
+  //console.log(validateSchema);
   if (!validateSchema.success) {
     return {
       ...prevState,

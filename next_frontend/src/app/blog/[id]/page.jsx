@@ -1,20 +1,11 @@
+import { getPost } from '@/actions/blog';
 import GoBackButton from '@/components/UI/blog/GoBackButton';
 import Image from 'next/image';
 import React from 'react'
 
 
-
-
-const getPost = async (id) =>{
-  const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL; // Move API_URL definition here
-  const response = await fetch(`${API_URL}blog/post/${id}`);
-  const result = await response.json();  
-  return result || [];
-}
-
-const BlogDetailPage = async ({params}) => {
-  const queryParam = await params
-  const id = queryParam.id
+const BlogDetailPage = async ({params}) => {  
+  const id = params.id
   const respose = await getPost(id);
   const post =  respose.post;
    

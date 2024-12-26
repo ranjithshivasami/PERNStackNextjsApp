@@ -2,27 +2,27 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const CardPost = ({post}) => {
+const CardPost = ({ post }) => {
   return (
-    <div key={post.id}
-        className="bg-white shadow rounded-lg p-4 mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center"
-      >
-        <div className="flex flex-col sm:flex-row sm:space-x-4">
-          <Image
+    <div key={post.id} className="card card-side bg-base-100 shadow-xl mt-5">
+      
+      <Image
             src={post.image}
             alt={post.title}
-            width={400}
-            height={250}
-            className="w-full sm:w-32 sm:h-32 mb-3 sm:mb-0 object-cover rounded-lg"
+            width={256}
+            height={171}     
+            style={{objectFit: "fill"}}	    
+            className='rounded-l-2xl'  
           />
-          <div className="space-y-1">
-            <Link href={`/blog/${post.id}`} ><h4 className="text-lg font-semibold">{post.title}</h4></Link>
-            <p className="text-sm text-gray-600">            
-              {post.content}
-            </p>
-          </div>
-        </div>        
+      
+      <div className="card-body">
+      <Link href={`/blog/${post.id}`} ><h4 className="card-title">{post.title}</h4></Link>        
+        <div className='overflow-hidden  truncate w-[52rem]'>{post.content}</div>
+        <div className="card-actions justify-end">
+          <Link href={`/blog/edit/${post.id}`} className="btn btn-sm btn-outline">Edit</Link>
+        </div>
       </div>
+    </div>    
   )
 }
 
