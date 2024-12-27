@@ -5,7 +5,7 @@ import React from 'react'
 
 
 const BlogDetailPage = async ({params}) => {  
-  const id = params.id
+  const {id} = await params
   const respose = await getPost(id);
   const post =  respose.post;
    
