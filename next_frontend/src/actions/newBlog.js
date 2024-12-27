@@ -36,7 +36,7 @@ export async function saveBlog(prevState, formData) {
 
   try {
     const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-    const response = await fetch(`${API_URL}blog/post`, {
+    const response = await fetch(`${API_URL}posts`, {
       method: 'POST',
       body: formData, // Directly pass FormData
     });

@@ -19,25 +19,14 @@ const fileStorage = multer.diskStorage({
   }
 });
 
-// const fileFilter = (req, file, callBack) => {
-//   if (
-//     file.mimetype === 'image/png' ||
-//     file.mimetype === 'image/jpg' ||
-//     file.mimetype === 'image/jpeg'
-//   ) {
-//     callBack(null, true); // Accept file
-//   } else {
-//     callBack(null, false); // Reject file
-//   }
-// };
+
 
 // Middleware for file uploads
 app.use(
   multer({ storage: fileStorage}).single('file')
 );
 app.use((req, res, next) => {
-  console.log('Request Body:', req.body);
-  console.log('Request File:', req.file);
+  console.log('Request Body:', req.body);  
   next();
 });
 
@@ -54,9 +43,7 @@ app.get('/', (req, res) => {
   res.json('Welcome to Node Express REST api...');
 });
 
-app.use('/blog', blogRouter);
-app.use('/task', taskRouter);
+app.use('/api/v1/posts', blogRouter);
+app.use('/api/v1/task', taskRouter);
 
-app.listen(8080, () => {
-  console.log('Server running on port 8000')
-});
+module.exports = app;
