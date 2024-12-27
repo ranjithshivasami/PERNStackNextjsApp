@@ -4,7 +4,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "debug": "ndb server.js"
   },
   "author": "Ranjith",
   "license": "ISC",
@@ -20,5 +21,8 @@
     "multer": "^1.4.5-lts.1",
     "nodemon": "^3.1.9",
     "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "ndb": "^1.1.5"
   }
 }

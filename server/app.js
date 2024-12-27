@@ -5,10 +5,12 @@ const multer = require('multer');
 const bodyParser = require("body-parser");
 const blogRouter = require("./routes/blog");
 const taskRouter = require("./routes/taskRouter");
+const userRouter = require("./routes/userRouter");
 
 const app = express();
 const cors = require("cors");  // Import cors
 app.use(cors());
+app.use(express.json());
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, callBack) => {
@@ -25,6 +27,7 @@ const fileStorage = multer.diskStorage({
 app.use(
   multer({ storage: fileStorage}).single('file')
 );
+
 app.use((req, res, next) => {
   console.log('Request Body:', req.body);  
   next();
@@ -42,7 +45,7 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
   res.json('Welcome to Node Express REST api...');
 });
-
+app.use('/api/v1/users', userRouter);
 app.use('/api/v1/posts', blogRouter);
 app.use('/api/v1/task', taskRouter);
 
