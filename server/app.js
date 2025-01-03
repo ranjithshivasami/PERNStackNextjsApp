@@ -42,6 +42,8 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
 app.get('/', (req, res) => {
   res.json('Welcome to Node Express REST api...');
 });
@@ -49,4 +51,11 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/posts', blogRouter);
 app.use('/api/v1/task', taskRouter);
 
+//handling unhandles routes exeptions
+app.all('*', (req, res, next) =>{
+  res.status(404).json({
+    status: 'fail',
+    message: `Can't find ${req.originalUrl} on the server!`
+  });
+});
 module.exports = app;
